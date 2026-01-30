@@ -33,17 +33,63 @@
 
 let url = "https://catfact.ninja/fact";
 
-async function getFacts() {
-    try {
-        let res = await fetch(url);
-        let data = await res.json();
-        console.log(data.fact);
+// async function getFacts() {
+//     try {
+//         let res = await fetch(url);
+//         let data = await res.json();
+//         console.log(data.fact);
 
-        let res2 = await fetch(url);
-        let data2 = await res2.json();
-        console.log(data2.fact);
-    } catch (err) {
-        console.log('ERRor', e);
+//         let res2 = await fetch(url);
+//         let data2 = await res2.json();
+//         console.log(data2.fact);
+//     } catch (err) {
+//         console.log('ERRor', e);
+//     }
+//     console.log("bye")
+// }
+
+// //<===================================== Axios ==================================>
+
+// let btn = document.querySelector("button");
+// let h1 = document.querySelector("h1");
+
+// btn.addEventListener("click",async ()=>{
+//     console.log("Url printing")
+//     let facts = await getFacts();
+//     h1.innerText = facts;
+//     let para = document.querySelector("#resulte");
+//     para.innerText = facts;
+// })
+
+// async function getFacts() {
+//     try {
+//         let res = await axios.get(url);
+//         return res.data.fact;
+//     } catch (err) {
+//         console.log('ERRor', e);
+//         return "No Facts Found";
+//     }
+// }
+
+// //<=================== same for DOG (Image) API ================================>
+
+let url2 = "https://dog.ceo/api/breeds/image/random";
+let btn = document.querySelector("button");
+
+btn.addEventListener("click",async ()=>{
+    let images =await getImage();
+    console.log(images);
+    let img = document.querySelector("#resulte");
+    img.setAttribute("src",images);
+    console.log(images);
+});
+async function getImage(){
+    try{
+        let res = await axios.get(url2);
+        console.log(res)
+        return res.data.message;
+    }catch(e){
+        console.log("ERROR", e);
+        return "No response Found!!!"
     }
-    console.log("bye")
 }
