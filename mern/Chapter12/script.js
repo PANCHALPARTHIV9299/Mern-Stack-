@@ -73,23 +73,111 @@ let url = "https://catfact.ninja/fact";
 
 // //<=================== same for DOG (Image) API ================================>
 
-let url2 = "https://dog.ceo/api/breeds/image/random";
+// let url2 = "https://dog.ceo/api/breeds/image/random";
+// let btn = document.querySelector("button");
+
+// btn.addEventListener("click",async ()=>{
+//     let images =await getImage();
+//     console.log(images);
+//     let img = document.querySelector("#resulte");
+//     img.setAttribute("src",images);
+//     console.log(images);
+// });
+// async function getImage(){
+//     try{
+//         let res = await axios.get(url2);
+//         console.log(res)
+//         return res.data.message;
+//     }catch(e){
+//         console.log("ERROR", e);
+//         return "No response Found!!!"
+//     }
+// }
+
+// //<========================================= axios with header =========================>
+
+// let url3 = "https://icanhazdadjoke.com/";
+
+// async function getJoke() {
+//     try {
+//         const getJson = { headers: { Accept: "application/json" } };
+//         let res = await axios.get(url3, getJson);
+//         console.log(res.data);
+//     } catch (e) {
+//         console.log("ERROR", e);
+//     }
+// }
+
+// //<========================================== update Query String =========================================>
+
+// let url4 = "http://universities.hipolabs.com/search?name=";
+
+
+// let inp = document.querySelector("input");
+// let btn = document.querySelector("button");
+
+// btn.addEventListener('click', async () => {
+//     let inputContry = inp.value;
+//     let contry = inputContry;
+//     let colleges = await getCollege(contry);
+//     show(colleges);
+// });
+
+// function show(colleges) {
+//     let list = document.querySelector("#list");
+//     list.innerText = "";
+//     for (col of colleges) {
+//         console.log(col.name);
+//         let li = document.createElement("li");
+//         li.innerText = col.name;
+//         list.appendChild(li);
+//     }
+// }
+
+// async function getCollege(contry) {
+//     try {
+//         let res = await axios.get(url4 + contry);
+//         return res.data;
+//     } catch (e) {
+//         console.log(e);
+//         return [];
+//     }
+// }
+
+// //<<================================= api serch colleges using Contry + state ==============================>>
+
+
+let url5 = "http://universities.hipolabs.com/search?contry=india&name=";
+
+let inp = document.querySelector("input");
 let btn = document.querySelector("button");
 
-btn.addEventListener("click",async ()=>{
-    let images =await getImage();
-    console.log(images);
-    let img = document.querySelector("#resulte");
-    img.setAttribute("src",images);
-    console.log(images);
+btn.addEventListener('click', async () => {
+    let inputContry = inp.value;
+    let state = inputContry;
+    console.log(state)
+    let colleges = await getCollege(state);
+    console.log(colleges)
+    show1(colleges);
 });
-async function getImage(){
-    try{
-        let res = await axios.get(url2);
-        console.log(res)
-        return res.data.message;
-    }catch(e){
-        console.log("ERROR", e);
-        return "No response Found!!!"
+
+function show1(colleges){
+    let list = document.querySelector("#list");
+    list.innerText = "";
+    for (col of colleges) {
+        console.log(col.name);
+        let li = document.createElement("li");
+        li.innerText = col.name;
+        list.appendChild(li);
+    }
+}
+
+async function getCollege( state) {
+    try {
+        let res = await axios.get(url5 + state);
+        return res.data;
+    } catch (e) {
+        console.log(e);
+        return [];
     }
 }
