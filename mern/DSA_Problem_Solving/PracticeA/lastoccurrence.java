@@ -1,4 +1,4 @@
-public class lastoccurrence {
+ public class lastoccurrence {
     public static void main(String args[]){
         int[] arr={2,4,15,8,3,5,8,7,5,8,9,10};
         int match = 8;
