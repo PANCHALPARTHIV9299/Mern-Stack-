@@ -19,6 +19,7 @@ public class removeduplicat{
                     index++;
                 }
             }
+            // =============================== New Array =====================================
             System.out.println("Unique Elemnet is : "+index );
             for (int i =0; i<index; i++){
                 System.out.print(arr[i]);
